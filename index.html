@@ -3,277 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drupal-coder - поддержка сайтов на Drupal</title>
+    <title>Éclat de Douceur | Премиум кондитерская</title>
     
-    <!-- Подключение шрифта Montserrat из fonts.txt -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Подключение шрифта Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Подключение CSS файла -->
+    <!-- Подключение стилей -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- CSS для анимаций через requestAnimationFrame -->
-    <style>
-        .raf-animating {
-            will-change: transform, opacity;
-        }
-        
-        /* Стили для видео-фона если видео не загрузится */
-        .video-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a2980, #26d0ce);
-            z-index: -2;
-        }
-    </style>
+    <!-- Иконка сайта (favicon) -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Éclat de Douceur - премиум кондитерская. Авторские десерты, свадебные торты на заказ, мастер-классы от ведущих кондитеров.">
+    <meta name="keywords" content="премиум кондитерская, авторские десерты, торты на заказ, свадебные торты, мастер-классы кондитера">
 </head>
 <body>
-    <!-- Навигация -->
-    <nav class="nav" id="mainNav">
-        <div class="container nav-container">
-            <a href="#" class="logo">Drupal-coder</a>
-            
-            <!-- Десктопное меню -->
-            <div class="desktop-menu">
-                <a href="#services">Поддержка сайтов</a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle">Администрирование ▼</a>
-                    <div class="dropdown-content">
-                        <a href="#">Миграция</a>
-                        <a href="#">Бэкапы</a>
-                        <a href="#">Аудит безопасности</a>
-                        <a href="#">Оптимизация скорости</a>
-                        <a href="#">Переезд на HTTPS</a>
-                    </div>
-                </div>
-                <a href="#pricing">Продвижение</a>
-                <a href="#contact">Реклама</a>
-                <button class="cta-button" id="contactBtn">Связь с нами</button>
-            </div>
-            
-            <!-- Кнопка мобильного меню -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        
-        <!-- Мобильное меню -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#services">Поддержка сайтов</a>
-            <a href="#" class="dropdown-toggle-mobile">Администрирование</a>
-            <div class="mobile-dropdown">
-                <a href="#">Миграция</a>
-                <a href="#">Бэкапы</a>
-                <a href="#">Аудит безопасности</a>
-                <a href="#">Оптимизация скорости</a>
-                <a href="#">Переезд на HTTPS</a>
-            </div>
-            <a href="#pricing">Продвижение</a>
-            <a href="#contact">Реклама</a>
-            <button class="cta-button" id="contactBtnMobile">Связь с нами</button>
-        </div>
-    </nav>
-    
-    <!-- Шапка сайта с видео -->
-    <header class="header" id="header">
-        <!-- Видео-фон (опционально) -->
+    <!-- Шапка сайта с видео-фоном -->
+    <header class="header">
         <div class="video-container">
-            <!-- Если есть video.mp4 - раскомментируй следующую строку -->
-            <!-- <video autoplay muted loop playsinline class="video-background" id="headerVideo">
+            <video autoplay muted loop playsinline id="headerVideo">
                 <source src="video.mp4" type="video/mp4">
                 Ваш браузер не поддерживает видео.
-            </video> -->
+            </video>
+            <!-- Фолбэк изображение если видео не загрузится -->
             <div class="video-fallback"></div>
         </div>
         
-        <div class="container">
-            <div class="hero">
-                <h1>13 лет совершенствуем компетенции в Drupal поддержке!</h1>
-                <p>Разрабатываем и оптимизируем модули, расширяем функциональность сайтов, обновляем дизайн</p>
-                <button class="cta-button" id="heroContactBtn">Получить консультацию</button>
+        <!-- Навигационное меню -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <!-- Логотип -->
+                <a href="#" class="logo">Éclat de Douceur</a>
+                
+                <!-- Мобильное меню (бургер) -->
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <!-- Основное меню для десктопа -->
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#about">О нас</a></li>
+                    <li class="dropdown">
+                        <a href="#products">Десерты ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#wedding-cakes">Свадебные торты</a></li>
+                            <li><a href="#author-desserts">Авторские десерты</a></li>
+                            <li><a href="#seasonal">Сезонные предложения</a></li>
+                            <li><a href="#corporate">Корпоративные заказы</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#masterclasses">Мастер-классы</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
             </div>
+        </nav>
+        
+        <!-- Заголовок на видео -->
+        <div class="header-content">
+            <h1 class="header-title">Éclat de Douceur</h1>
+            <p class="header-subtitle">Искусство сладких мгновений</p>
+            <a href="#contacts" class="btn btn-primary">Заказать дегустацию</a>
         </div>
     </header>
-    
-    <!-- Секция услуг -->
-    <section class="section" id="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3>Разработка</h3>
-                    <p>Создание новых разделов, добавление информации на сайт</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Оптимизация</h3>
-                    <p>Ускорение работы Drupal-сайтов, оптимизация модулей</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🔗</div>
-                    <h3>Интеграция</h3>
-                    <p>Подключение CRM, 1С, платежных систем и других веб-сервисов</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
-                    <h3>Аудит</h3>
-                    <p>Проверка безопасности Drupal, мониторинг и оптимизация</p>
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+        <!-- Секция "О нас" -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2 class="section-title">О премиум кондитерской</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>14 лет мы создаем сладкие произведения искусства, которые покоряют сердца гурманов. Каждый десерт — это уникальная история, воплощенная в изысканных вкусах и безупречном оформлении.</p>
+                        <p>Мы используем только премиальные ингредиенты от проверенных европейских поставщиков: бельгийский шоколад, французская мука, итальянские орехи и натуральные ванильные стручки с Мадагаскара.</p>
+                        <p>Наша философия: совершенство в деталях, элегантность в простоте, эмоции во вкусе.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="img/cake1.jpg" alt="Авторский торт от Éclat de Douceur" loading="lazy">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Секция тарифов -->
-    <section class="section section-gray" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Тарифы поддержки</h2>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Стартовый</h3>
-                    <div class="price">от 6 000 ₽/мес</div>
-                    <ul class="features">
-                        <li>Консультации по SEO</li>
-                        <li>Услуги дизайнера</li>
-                        <li>Неиспользованные часы переносятся</li>
-                    </ul>
-                    <button class="cta-button cta-outline">Выбрать</button>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="badge">Популярный</div>
-                    <h3>Бизнес</h3>
-                    <div class="price">от 30 000 ₽/мес</div>
-                    <ul class="features">
-                        <li>Высокое время реакции</li>
-                        <li>Услуги дизайнера</li>
-                        <li>Неиспользованные часы не переносятся</li>
-                        <li>Приоритетная поддержка</li>
-                    </ul>
-                    <button class="cta-button">Выбрать</button>
-                </div>
-                
-                <div class="pricing-card">
-                    <h3>VIP</h3>
-                    <div class="price">от 270 000 ₽/мес</div>
-                    <ul class="features">
-                        <li>Максимальное время реакции</li>
-                        <li>Персональный менеджер</li>
-                        <li>Все включено</li>
-                        <li>Круглосуточная поддержка</li>
-                    </ul>
-                    <button class="cta-button cta-outline">Выбрать</button>
+        </section>
+
+        <!-- Секция "Наши услуги" -->
+        <section id="services" class="section services-section">
+            <div class="container">
+                <h2 class="section-title">Наши услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎂</div>
+                        <h3>Свадебные торты</h3>
+                        <p>Индивидуальное проектирование и создание свадебных тортов, отражающих историю вашей любви.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🍰</div>
+                        <h3>Авторские десерты</h3>
+                        <p>Уникальные десерты по вашим эскизам или разработанные нашими кондитерами-художниками.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Корпоративные заказы</h3>
+                        <p>Десерты для бизнес-ивентов, фуршетов и презентаций с фирменной символикой компании.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👨‍🍳</div>
+                        <h3>Мастер-классы</h3>
+                        <p>Обучение искусству кондитера для начинающих и профессиональных мастеров.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Форма обратной связи (основная) -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Оставить заявку</h2>
-            
-            <form id="mainContactForm" class="contact-form">
-                <div class="message" id="formMessage"></div>
-                
-                <div class="form-group">
-                    <label for="name">Ваше имя *</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
+        </section>
+
+        <!-- Секция "Тарифы" -->
+        <section id="pricing" class="section pricing-section">
+            <div class="container">
+                <h2 class="section-title">Тарифы сопровождения</h2>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Стартовый</h3>
+                        <div class="price">от 15 000 ₽/мес</div>
+                        <ul class="features">
+                            <li>Консультации по подбору десертов</li>
+                            <li>3 авторских десерта в месяц</li>
+                            <li>Бесплатная доставка по центру</li>
+                            <li class="not-included">Индивидуальный дизайн</li>
+                            <li class="not-included">Срочные заказы</li>
+                        </ul>
+                        <button class="btn btn-secondary" data-plan="starter">Выбрать тариф</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="badge">Популярный</div>
+                        <h3>Бизнес</h3>
+                        <div class="price">от 50 000 ₽/мес</div>
+                        <ul class="features">
+                            <li>Полное сопровождение мероприятий</li>
+                            <li>10+ авторских десертов в месяц</li>
+                            <li>Бесплатная доставка по городу</li>
+                            <li>Индивидуальный дизайн</li>
+                            <li class="not-included">Срочные заказы (24ч)</li>
+                        </ul>
+                        <button class="btn btn-primary" data-plan="business">Выбрать тариф</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Премиум</h3>
+                        <div class="price">от 150 000 ₽/мес</div>
+                        <ul class="features">
+                            <li>Персональный кондитер</li>
+                            <li>Неограниченное количество десертов</li>
+                            <li>Доставка в регионы</li>
+                            <li>Эксклюзивный дизайн</li>
+                            <li>Срочные заказы (12-24ч)</li>
+                        </ul>
+                        <button class="btn btn-secondary" data-plan="premium">Выбрать тариф</button>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="phone">Телефон *</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required>
+            </div>
+        </section>
+
+        <!-- Секция "Команда" -->
+        <section id="team" class="section team-section">
+            <div class="container">
+                <h2 class="section-title">Наша команда</h2>
+                <div class="team-slider" id="teamSlider">
+                    <div class="slide">
+                        <img src="img/team1.jpg" alt="Анна Петрова - шеф-кондитер">
+                        <h3>Анна Петрова</h3>
+                        <p>Шеф-кондитер, 14 лет опыта. Специализация: авторские торты и десерты.</p>
+                    </div>
+                    <div class="slide">
+                        <img src="img/team2.jpg" alt="Максим Иванов - кондитер-художник">
+                        <h3>Максим Иванов</h3>
+                        <p>Кондитер-художник, 10 лет опыта. Специализация: художественная роспись и дизайн.</p>
+                    </div>
+                    <div class="slide">
+                        <img src="img/team3.jpg" alt="Елена Смирнова - мастер декора">
+                        <h3>Елена Смирнова</h3>
+                        <p>Мастер декора, 8 лет опыта. Специализация: сахарные цветы и фигурки.</p>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" id="prevSlide">‹</button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn next" id="nextSlide">›</button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="comment">Комментарий</label>
-                    <textarea id="comment" name="comment" class="form-control" rows="4"></textarea>
+            </div>
+        </section>
+
+        <!-- Секция "Часто задаваемые вопросы" -->
+        <section class="section faq-section">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">Как заказать торт на мероприятие?</button>
+                        <div class="faq-answer">
+                            <p>Для заказа необходимо связаться с нашим менеджером за 7-14 дней до мероприятия. Мы проведем консультацию, разработаем дизайн и согласуем все детали.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Какие ингредиенты вы используете?</button>
+                        <div class="faq-answer">
+                            <p>Мы работаем только с премиальными ингредиентами: бельгийский шоколад Callebaut, французская мука Francine, натуральные ванильные стручки и свежие фермерские продукты.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Есть ли доставка в другие города?</button>
+                        <div class="faq-answer">
+                            <p>Да, мы осуществляем доставку по всей России специальной курьерской службой с термоконтейнерами для сохранения свежести и внешнего вида десертов.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="loading-spinner" id="loadingSpinner"></span>
-                    <span id="submitText">Отправить заявку</span>
-                </button>
-            </form>
-        </div>
-    </section>
-    
-    <!-- Модальное окно для связи -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal" id="contactModal">
-            <button class="close-modal" id="closeModal" aria-label="Закрыть">&times;</button>
-            <h2>Связь с нами</h2>
-            <p>Заполните форму и мы свяжемся с вами в ближайшее время</p>
-            
-            <form id="modalContactForm">
-                <div class="form-group">
-                    <label for="modalName">Имя *</label>
-                    <input type="text" id="modalName" class="form-control" required>
+            </div>
+        </section>
+
+        <!-- Секция "Отзывы" -->
+        <section id="reviews" class="section reviews-section">
+            <div class="container">
+                <h2 class="section-title">Отзывы клиентов</h2>
+                <div class="reviews-slider" id="reviewsSlider">
+                    <div class="review">
+                        <div class="review-text">"Свадебный торт от Éclat de Douceur стал главным украшением нашей свадьбы! Вкус невероятный, а дизайн превзошел все ожидания."</div>
+                        <div class="review-author">- Мария и Алексей</div>
+                    </div>
+                    <div class="review">
+                        <div class="review-text">"Заказываем корпоративные десерты для всех мероприятий компании. Качество всегда на высшем уровне, а дизайн с нашей символикой безупречен."</div>
+                        <div class="review-author">- Ольга, руководитель отдела маркетинга</div>
+                    </div>
+                    <div class="review">
+                        <div class="review-text">"Мастер-класс от Анны Петровой перевернул мое представление о кондитерском искусстве. Теперь делаю сложные десерты дома!"</div>
+                        <div class="review-author">- Екатерина, участница мастер-класса</div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section id="contacts" class="section contact-section">
+            <div class="container">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="section-subtitle">Оставьте заявку для заказа десертов, консультации или записи на мастер-класс</p>
                 
-                <div class="form-group">
-                    <label for="modalEmail">Email *</label>
-                    <input type="email" id="modalEmail" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalPhone">Телефон</label>
-                    <input type="tel" id="modalPhone" class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="modalMessage">Сообщение *</label>
-                    <textarea id="modalMessage" class="form-control" rows="4" required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Отправить</button>
-            </form>
-        </div>
-    </div>
-    
-    <!-- Футер -->
+                <form id="contactForm" class="contact-form">
+                    <!-- Сообщения об успехе/ошибке -->
+                    <div id="formMessage" class="form-message"></div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Имя *</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Услуга</label>
+                        <select id="service" name="service">
+                            <option value="">Выберите услугу</option>
+                            <option value="wedding">Свадебный торт</option>
+                            <option value="corporate">Корпоративный заказ</option>
+                            <option value="masterclass">Мастер-класс</option>
+                            <option value="consultation">Консультация</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">Я согласен на обработку персональных данных *</label>
+                        <div class="error-message" id="consentError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="btn-text">Отправить заявку</span>
+                        <span class="btn-loader" id="btnLoader">⌛</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Drupal-coder</h3>
-                    <p>Профессиональная поддержка сайтов на Drupal</p>
-                    <p>13 лет опыта, 200+ проектов</p>
+                    <h3>Éclat de Douceur</h3>
+                    <p>Премиум кондитерская. Создаем сладкие моменты с 2010 года.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="VK">👥</a>
+                    </div>
                 </div>
-                
                 <div class="footer-contacts">
                     <h4>Контакты</h4>
-                    <p>8 800 222-26-73</p>
-                    <p>info@drupal-coder.ru</p>
-                    <p>Работаем: 9:00 - 18:00</p>
+                    <p>📍 Москва, ул. Тверская, д. 15</p>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>✉️ info@eclat-douceur.ru</p>
+                    <p>🕐 Ежедневно 9:00 - 21:00</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>© Drupal-coder 2023. Все права защищены.</p>
+                <p>&copy; 2023 Éclat de Douceur. Все права защищены.</p>
                 <p>Drupal является зарегистрированной торговой маркой Dries Buytaert.</p>
             </div>
         </div>
     </footer>
-    
-    <!-- Подключение JavaScript файла -->
+
+    <!-- Мобильное меню (отдельный блок для анимации) -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu-container" id="mobileMenuContainer">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">Меню</span>
+            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+        </div>
+        <ul class="mobile-menu-list">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#products">Десерты</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#masterclasses">Мастер-классы</a></li>
+            <li><a href="#team">Команда</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </div>
+
+    <!-- Подключение скриптов -->
     <script src="script.js"></script>
+    
+    <!-- Подсказка для браузеров без JavaScript -->
+    <noscript>
+        <style>
+            .mobile-menu-toggle { display: none; }
+            .form-message { background-color: #ffcccc; padding: 10px; }
+        </style>
+        <div class="nojs-warning">
+            Включите JavaScript для полной функциональности сайта.
+        </div>
+    </noscript>
 </body>
 </html>
