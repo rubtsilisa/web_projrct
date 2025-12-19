@@ -11,7 +11,7 @@
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Иконка сайта (favicon) -->
+    <!-- Иконка сайта (favicon) - нужно будет добавить позже -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     
     <!-- Мета-теги для SEO -->
@@ -85,7 +85,10 @@
                         <p>Наша философия: совершенство в деталях, элегантность в простоте, эмоции во вкусе.</p>
                     </div>
                     <div class="about-image">
-                        <img src="img/cake1.jpg" alt="Авторский торт от Éclat de Douceur" loading="lazy">
+                        <!-- Временный placeholder, замените на реальное изображение -->
+                        <div class="image-placeholder" style="width:100%;height:300px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;border-radius:12px;">
+                            <span>Изображение кондитерской</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,52 +173,76 @@
         <section id="team" class="section team-section">
             <div class="container">
                 <h2 class="section-title">Наша команда</h2>
-                <div class="team-slider" id="teamSlider">
-                    <div class="slide">
-                        <img src="img/team1.jpg" alt="Анна Петрова - шеф-кондитер">
-                        <h3>Анна Петрова</h3>
-                        <p>Шеф-кондитер, 14 лет опыта. Специализация: авторские торты и десерты.</p>
+                
+                <!-- Исправленный слайдер: добавлен контейнер для слайдов -->
+                <div class="slider-container">
+                    <div class="team-slider" id="teamSlider">
+                        <!-- Слайд 1 -->
+                        <div class="slide active">
+                            <!-- Временный placeholder, замените на реальное фото -->
+                            <div class="slide-image-placeholder" style="width:150px;height:150px;background:#e0e0e0;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;">
+                                <span>Фото</span>
+                            </div>
+                            <h3>Анна Петрова</h3>
+                            <p>Шеф-кондитер, 14 лет опыта. Специализация: авторские торты и десерты.</p>
+                        </div>
+                        <!-- Слайд 2 -->
+                        <div class="slide">
+                            <div class="slide-image-placeholder" style="width:150px;height:150px;background:#e0e0e0;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;">
+                                <span>Фото</span>
+                            </div>
+                            <h3>Максим Иванов</h3>
+                            <p>Кондитер-художник, 10 лет опыта. Специализация: художественная роспись и дизайн.</p>
+                        </div>
+                        <!-- Слайд 3 -->
+                        <div class="slide">
+                            <div class="slide-image-placeholder" style="width:150px;height:150px;background:#e0e0e0;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;">
+                                <span>Фото</span>
+                            </div>
+                            <h3>Елена Смирнова</h3>
+                            <p>Мастер декора, 8 лет опыта. Специализация: сахарные цветы и фигурки.</p>
+                        </div>
                     </div>
-                    <div class="slide">
-                        <img src="img/team2.jpg" alt="Максим Иванов - кондитер-художник">
-                        <h3>Максим Иванов</h3>
-                        <p>Кондитер-художник, 10 лет опыта. Специализация: художественная роспись и дизайн.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="img/team3.jpg" alt="Елена Смирнова - мастер декора">
-                        <h3>Елена Смирнова</h3>
-                        <p>Мастер декора, 8 лет опыта. Специализация: сахарные цветы и фигурки.</p>
-                    </div>
-                </div>
-                <div class="slider-controls">
+                    
+                    <!-- Кнопки навигации слайдера -->
                     <button class="slider-btn prev" id="prevSlide">‹</button>
-                    <div class="slider-dots" id="sliderDots"></div>
                     <button class="slider-btn next" id="nextSlide">›</button>
+                </div>
+                
+                <!-- Индикаторы (точки) слайдера -->
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Точки будут добавлены через JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Секция "Часто задаваемые вопросы" -->
+        <!-- Секция "Часто задаваемые вопросы" - исправленная -->
         <section class="section faq-section">
             <div class="container">
                 <h2 class="section-title">Часто задаваемые вопросы</h2>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <button class="faq-question">Как заказать торт на мероприятие?</button>
+                        <button class="faq-question">Как заказать торт на мероприятие?<span class="faq-icon">+</span></button>
                         <div class="faq-answer">
                             <p>Для заказа необходимо связаться с нашим менеджером за 7-14 дней до мероприятия. Мы проведем консультацию, разработаем дизайн и согласуем все детали.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Какие ингредиенты вы используете?</button>
+                        <button class="faq-question">Какие ингредиенты вы используете?<span class="faq-icon">+</span></button>
                         <div class="faq-answer">
                             <p>Мы работаем только с премиальными ингредиентами: бельгийский шоколад Callebaut, французская мука Francine, натуральные ванильные стручки и свежие фермерские продукты.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question">Есть ли доставка в другие города?</button>
+                        <button class="faq-question">Есть ли доставка в другие города?<span class="faq-icon">+</span></button>
                         <div class="faq-answer">
                             <p>Да, мы осуществляем доставку по всей России специальной курьерской службой с термоконтейнерами для сохранения свежести и внешнего вида десертов.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Можно ли изменить заказ после оформления?<span class="faq-icon">+</span></button>
+                        <div class="faq-answer">
+                            <p>Изменения возможны за 48 часов до даты доставки. После этого срока изменения вносятся по согласованию и могут повлиять на сроки выполнения заказа.</p>
                         </div>
                     </div>
                 </div>
@@ -226,7 +253,7 @@
         <section id="reviews" class="section reviews-section">
             <div class="container">
                 <h2 class="section-title">Отзывы клиентов</h2>
-                <div class="reviews-slider" id="reviewsSlider">
+                <div class="reviews-container">
                     <div class="review">
                         <div class="review-text">"Свадебный торт от Éclat de Douceur стал главным украшением нашей свадьбы! Вкус невероятный, а дизайн превзошел все ожидания."</div>
                         <div class="review-author">- Мария и Алексей</div>
@@ -234,10 +261,6 @@
                     <div class="review">
                         <div class="review-text">"Заказываем корпоративные десерты для всех мероприятий компании. Качество всегда на высшем уровне, а дизайн с нашей символикой безупречен."</div>
                         <div class="review-author">- Ольга, руководитель отдела маркетинга</div>
-                    </div>
-                    <div class="review">
-                        <div class="review-text">"Мастер-класс от Анны Петровой перевернул мое представление о кондитерском искусстве. Теперь делаю сложные десерты дома!"</div>
-                        <div class="review-author">- Екатерина, участница мастер-класса</div>
                     </div>
                 </div>
             </div>
@@ -247,7 +270,8 @@
         <section id="contacts" class="section contact-section">
             <div class="container">
                 <h2 class="section-title">Свяжитесь с нами</h2>
-                <p class="section-subtitle">Оставьте заявку для заказа десертов, консультации или записи на мастер-класс</p>
+                <!-- Исправленный подзаголовок с правильным центрированием -->
+                <p class="section-subtitle contact-subtitle">Оставьте заявку для заказа десертов, консультации или записи на мастер-класс</p>
                 
                 <form id="contactForm" class="contact-form">
                     <!-- Сообщения об успехе/ошибке -->
@@ -325,7 +349,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Éclat de Douceur. Все права защищены.</p>
+                <p>&copy; <span id="currentYear">2023</span> Éclat de Douceur. Все права защищены.</p>
                 <p>Drupal является зарегистрированной торговой маркой Dries Buytaert.</p>
             </div>
         </div>
@@ -357,6 +381,7 @@
         <style>
             .mobile-menu-toggle { display: none; }
             .form-message { background-color: #ffcccc; padding: 10px; }
+            .nojs-warning { display: block !important; }
         </style>
         <div class="nojs-warning">
             Включите JavaScript для полной функциональности сайта.
