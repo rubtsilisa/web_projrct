@@ -72,6 +72,18 @@ body {
     border-radius: 2px;
 }
 
+/* ИСПРАВЛЕНИЕ: Добавляем стили для подзаголовка в секции контактов */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
 /* Кнопки */
 .btn {
     display: inline-block;
@@ -506,48 +518,83 @@ body {
     color: #ff6b6b;
 }
 
-/* Слайдер команды */
+/* ==========================================================================
+   ИСПРАВЛЕННЫЙ СЛАЙДЕР КОМАНДЫ
+   ========================================================================== */
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
 .team-slider {
     display: flex;
-    overflow-x: auto; /* Горизонтальный скролл на мобильных */
-    scroll-snap-type: x mandatory;
-    gap: 30px;
-    padding: 20px 0;
-    scrollbar-width: none; /* Скрыть скроллбар в Firefox */
+    transition: transform 0.5s ease;
+    /* Убираем прокрутку мышкой */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .team-slider::-webkit-scrollbar {
-    display: none; /* Скрыть скроллбар в Chrome/Safari */
+    display: none;
 }
 
 .slide {
-    min-width: 100%; /* Один слайд на всю ширину на мобильных */
-    scroll-snap-align: start;
-    background: var(--white);
-    border-radius: var(--border-radius);
-    padding: 30px;
+    min-width: 100%;
+    flex-shrink: 0;
+    padding: 40px 20px;
     text-align: center;
+    background: var(--white);
     box-shadow: var(--shadow);
-}
-
-.slide img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 5px solid var(--light-color);
-}
-
-.slider-controls {
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    gap: 20px;
 }
 
+.slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+/* Иконка для временного placeholder */
+.slide-image-placeholder {
+    width: 150px;
+    height: 150px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.slide h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.slide p {
+    color: var(--text-light);
+    max-width: 300px;
+}
+
+/* Кнопки слайдера */
 .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: var(--primary-color);
     color: var(--white);
     border: none;
@@ -557,18 +604,34 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     transition: var(--transition);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider-btn:hover {
     background: #f598c9;
+    transform: translateY(-50%) scale(1.1);
 }
 
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+/* Точки-индикаторы слайдера */
 .slider-dots {
     display: flex;
+    justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
-.dot {
+.slider-dots .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -577,11 +640,15 @@ body {
     transition: var(--transition);
 }
 
-.dot.active {
+.slider-dots .dot.active {
     background: var(--primary-color);
+    transform: scale(1.2);
 }
 
-/* FAQ */
+/* ==========================================================================
+   ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН
+   ========================================================================== */
+
 .faq-list {
     max-width: 800px;
     margin: 0 auto;
@@ -605,40 +672,53 @@ body {
     cursor: pointer;
     position: relative;
     transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .faq-question:hover {
     background: #f9f9f9;
 }
 
-.faq-question:after {
-    content: "+";
-    position: absolute;
-    right: 20px;
+.faq-icon {
     font-size: 1.5rem;
-    transition: var(--transition);
+    font-weight: 300;
+    transition: transform 0.3s ease;
 }
 
-.faq-question.active:after {
-    content: "-";
+.faq-question.active .faq-icon {
+    transform: rotate(45deg); /* Поворачиваем + на × */
 }
 
 .faq-answer {
     max-height: 0;
     overflow: hidden;
     background: #f9f9f9;
-    transition: max-height 0.3s ease-out; /* CSS-анимация для раскрытия */
+    transition: max-height 0.5s ease-out; /* Плавное раскрытие */
 }
 
 .faq-answer p {
     padding: 0 20px 20px;
+    line-height: 1.6;
+    color: var(--text-light);
 }
 
-/* Слайдер отзывов */
-.reviews-slider {
+/* Когда активен, показываем ответ */
+.faq-item.active .faq-answer {
+    max-height: 500px; /* Достаточно большое значение для плавной анимации */
+}
+
+/* ==========================================================================
+   СЕКЦИЯ ОТЗЫВОВ
+   ========================================================================== */
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     max-width: 800px;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 .review {
@@ -646,7 +726,6 @@ body {
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    margin: 0 15px;
     text-align: center;
 }
 
@@ -655,6 +734,7 @@ body {
     font-style: italic;
     margin-bottom: 20px;
     line-height: 1.8;
+    color: var(--text-color);
 }
 
 .review-author {
@@ -726,6 +806,7 @@ body {
 .checkbox-group label {
     display: inline;
     font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 .error-message {
@@ -810,6 +891,7 @@ body {
 .footer-info h3 {
     font-size: 1.8rem;
     margin-bottom: 15px;
+    color: var(--white);
 }
 
 .footer-info p {
@@ -928,6 +1010,19 @@ body {
         flex-direction: row;
         justify-content: space-between;
     }
+    
+    /* Слайдер для планшетов */
+    .slider-container {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .slider-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -948,14 +1043,15 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
     
-    /* Слайдер команды - показываем несколько слайдов одновременно */
-    .team-slider {
-        overflow: visible;
-        justify-content: center;
+    /* Слайдер для десктопа */
+    .slider-container {
+        max-width: 800px;
     }
     
-    .slide {
-        min-width: calc(33.333% - 20px);
+    /* FAQ для десктопа */
+    .faq-question {
+        font-size: 1.2rem;
+        padding: 25px;
     }
 }
 
@@ -981,4 +1077,5 @@ body {
     top: 0;
     width: 100%;
     z-index: 9999;
+    display: none;
 }
